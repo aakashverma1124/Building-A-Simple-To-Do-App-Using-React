@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LoginComponent from "./components/Login/LoginComponent";
+import ToDoApp from "./components/Login/ToDoApp";
 
 class App extends Component {
   render() {
     return (
         <div className="App">
-          <LoginComponent />
+          <ToDoApp />
         </div>
     );
   }
