@@ -1,15 +1,40 @@
 import React, {Component} from "react";
-import userEvent from "@testing-library/user-event";
-
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 class ToDoApp extends Component {
     render() {
         return (
             <div>
-                <LoginComponent/>
+                <Router>
+                    <Switch>
+                        <Route path="/" exact component={LoginComponent}/>
+                        <Route path="/login" component={LoginComponent}/>
+                        <Route path="/welcome" component={WelcomeComponent}/>
+                        <Route component={ErrorComponent}/>
+                    </Switch>
+                </Router>
+
+                {/*<LoginComponent />
+                <WelcomeComponent />*/}
             </div>
         )
     }
+
+}
+
+
+class WelcomeComponent extends Component {
+    render() {
+        return (
+            <div>
+                Welcome
+            </div>
+        )
+    }
+}
+
+function ErrorComponent() {
+    return <div>This is an error page</div>
 
 }
 
@@ -32,8 +57,9 @@ class LoginComponent extends Component {
 
     loginClicked() {
         if(this.state.username === "aakashverma" && this.state.password === "hello") {
-            this.setState({showSuccessfulMessage: true})
-            this.setState({hashLoginFailed: false})
+            this.props.history.push("/welcome")
+            //this.setState({showSuccessfulMessage: true})
+            //this.setState({hashLoginFailed: false})
         }
         else {
             this.setState({showSuccessfulMessage: false})
