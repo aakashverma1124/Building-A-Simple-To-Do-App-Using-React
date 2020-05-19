@@ -32,5 +32,4 @@ class ToDoApp extends Component {
     }
 
 }
-
 export default ToDoApp
