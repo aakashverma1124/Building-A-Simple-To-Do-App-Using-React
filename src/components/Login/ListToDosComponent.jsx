@@ -45,3 +45,6 @@ class ListToDosComponent extends Component {
         )
     }
 }
+
+
+export default ListToDosComponent
