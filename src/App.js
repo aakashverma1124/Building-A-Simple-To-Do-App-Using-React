@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import './bootstrap.css';
 import ToDoApp from "./components/Login/ToDoApp";
