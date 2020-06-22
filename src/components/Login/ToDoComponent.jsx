@@ -46,6 +46,16 @@ class  ToDoComponent extends Component {
     }
 
     onSubmit(values) {
+        let username = AuthenticationService.getLoggedInUser()
+        ToDoService.updateTodo(username, this.state.id, {
+            id: this.state.id,
+            description: values.description,
+            targetDate: values.targetDate
+        }).then(
+            () => {
+                this.props.history.push(`/todos`)
+            }
+        )
         console.log(values)
     }
 
@@ -75,7 +85,7 @@ class  ToDoComponent extends Component {
                                             <label>Date</label>
                                             <Field className="form-control" type="date" name="targetDate"/>
                                         </fieldset>
-                                        <button className="btn btn-success" type="submit">Update</button>
+                                        <button className="btn btn-success" type="submit">Save</button>
                                     </Form>
                                 )
                             }
