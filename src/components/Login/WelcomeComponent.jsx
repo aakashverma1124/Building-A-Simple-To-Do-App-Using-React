@@ -9,6 +9,7 @@ class WelcomeComponent extends Component {
             welcomeMessage : ''
         }
         this.retrieveHelloMessage = this.retrieveHelloMessage.bind(this);
+        this.handleError = this.handleError.bind(this)
         this.handleSuccessfulResponse = this.handleSuccessfulResponse.bind(this);
     }
 
@@ -33,6 +34,16 @@ class WelcomeComponent extends Component {
     retrieveHelloMessage() {
         HelloWorldService.executeHelloWorldService()
             .then(response => this.handleSuccessfulResponse(response))
+    }
+
+    handleError(error) {
+        let errorMessage = ''
+        if(error.message)
+            errorMessage += error.message
+        if (error.response && error.response.data)
+            errorMessage += error.response.data.message
+
+        this.setState({welcomeMessage: errorMessage})
     }
 
     handleSuccessfulResponse(response) {
